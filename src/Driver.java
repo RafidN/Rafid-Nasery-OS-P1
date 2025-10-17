@@ -14,8 +14,8 @@ public class Driver {
 
         try
         {
-            Process logger = Runtime.getRuntime().exec("java Logger " + logFile);
-            Process encryption = Runtime.getRuntime().exec("java Encryption");
+            Process logger = Runtime.getRuntime().exec(new String[]{"java", "-cp", "src", "Logger", logFile}, null, new File("."));
+            Process encryption = Runtime.getRuntime().exec(new String[]{"java", "-cp", "src", "Encryption"}, null, new File("."));
 
             PrintStream log = new PrintStream(logger.getOutputStream(), true);
             PrintStream enc = new PrintStream(encryption.getOutputStream(), true);
@@ -35,6 +35,9 @@ public class Driver {
                     enc.flush();
                     log.println("QUIT");
                     log.flush();
+
+                    encryption.waitFor();
+                    logger.waitFor();
                     break;
                 }
                 else if (command.equals("password"))
@@ -48,18 +51,29 @@ public class Driver {
 
                     if(encInput.hasNextLine())
                     {
-                        System.out.println(encInput.nextLine());
+                        String response = encInput.nextLine();
+                        System.out.println(response);
+                        log.println(response);
+                        log.flush();
                     }
                 }
                 else if (command.equals("encrypt") || command.equals("decrypt"))
                 {
                     System.out.println("Enter text to " + command + ": ");
                     String text = userInput.nextLine().trim().toUpperCase();
+
                     enc.println(command.toUpperCase() + " " + text);
                     enc.flush();
+
+                    log.println(command.toUpperCase() + " " + text);
+                    log.flush();
+
                     if(encInput.hasNextLine())
                     {
-                        System.out.println(encInput.nextLine());
+                        String response = encInput.nextLine();
+                        System.out.println(response);
+                        log.println(response);
+                        log.flush();
                     }
                 }
                 else

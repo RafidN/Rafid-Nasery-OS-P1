@@ -116,3 +116,32 @@ can set "autoflush" to true, so I did. I'll probably still manually flush though
         Process encryption = Runtime.getRuntime().exec("java Encryption");
 ```
 - To solve the error, I have to use the new Java Process format which is Process(String[], null, File)
+- Nothing was being sent into the Logger when testing my Driver program, found a waitFor() command
+that I'll use to make sure all inputs are flushed before exiting the program
+- Found a solution online by specifying -cp src in the Runtime.exec command for initializing the process
+but now I notice that the encryption program seems to be working, but not all logs are ending up in the
+the log.txt file.
+
+
+### Oct 16 2025, 10:54PM
+
+#### SESSION REFLECTION
+
+Did I encounter any problems you have not already wrote about?
+- Already wrote about them
+
+Did I accomplish my goal for this session?
+- For the most part yes, I wasn't sure how much of the driver program I thought I could get done but I 
+did make a reasonable amount of progress. I quickly tested the programs so need more thurough testing.
+- For future reference, I tested by running
+```bash
+javac ./src/Logger.java ./src/Encryption.java ./src/Driver.java
+java ./src/Driver.java ./src/log.txt     
+```
+
+
+What am I thinking about doing next time?
+- History feature, including asking if user wants to use history as input
+- Input validation on Passkey (currently takes non-alphabet characters)
+- Test mentioned edge cases on design document
+- Pack these files nicely and submit the project.
