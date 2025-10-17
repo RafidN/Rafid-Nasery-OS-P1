@@ -104,3 +104,15 @@ Not sure how long I can work on the project tonight, but I'll be working on the 
 - Route the output of the encryption program to be the input to the logger program
 - Implement the history feature
 - Add all error checks etc.
+
+#### Notes During Development:
+- The Java Process example given on elearning seems simple enough, just going to use that 
+exact method 
+- IntelliJ pointed out that there is an optional argument in PrintStream() constructor where you
+can set "autoflush" to true, so I did. I'll probably still manually flush though just in case.
+- Got this error when using the Profs java code:
+```bash
+./src/Driver.java:18: warning: [deprecation] exec(String) in Runtime has been deprecated
+        Process encryption = Runtime.getRuntime().exec("java Encryption");
+```
+- To solve the error, I have to use the new Java Process format which is Process(String[], null, File)
