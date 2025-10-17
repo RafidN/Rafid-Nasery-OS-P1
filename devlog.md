@@ -90,4 +90,17 @@ What am I thinking about doing next time?
 Encryption programs, I see where the Driver program is heading with using the input/outputs of
 the Encryption program as input into the Logger. It has been a while since I worked with Java
 Processes (1.5 years) but I did use the C/C++ equivalents extensively in Programming in Unix 
-(CS337). 
+(CS337).
+
+### Oct 16 2025, 9:30PM
+
+#### Session Goals
+
+Not sure how long I can work on the project tonight, but I'll be working on the Driver Program
+- Create Driver file
+- Setup Java Processes to get access to Encrypt and Logger programs
+- Get user input for password, encrypt, decrypt, and quit
+- Send user input to encryption program
+- Route the output of the encryption program to be the input to the logger program
+- Implement the history feature
+- Add all error checks etc.
